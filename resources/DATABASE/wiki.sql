@@ -15,7 +15,7 @@ CREATE TABLE Users (
 -- Table des catégories
 CREATE TABLE Categorie (
     idCat INT AUTO_INCREMENT PRIMARY KEY,
-    cat_name VARCHAR(50) NOT NULL,
+    cat_name VARCHAR(50) UNIQUE NOT NULL,
     date_creation DATE NOT NULL
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE Wiki (
 -- Table des tags
 CREATE TABLE Tag (
     idTag INT AUTO_INCREMENT PRIMARY KEY,
-    tag_name VARCHAR(50) NOT NULL
+    tag_name VARCHAR(50) UNIQUE NOT NULL
 );
 
 -- Table de liaison entre les wikis et les tags

@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 
 <body
     class="home page-template page-template-page-blog page-template-page-blog-php page page-id-5 theme-jevelin woocommerce-js wpb-js-composer js-comp-ver-6.7.0 vc_responsive sh-header-mobile-spacing-compact sh-blog-style2 carousel-dot-style1 carousel-dot-spacing-5px carousel-dot-size-standard"
@@ -8,13 +11,12 @@
         content="Powered by Slider Revolution 6.6.18 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface.">
     <script
         src="https://jevelin.shufflehound.com/blog1/wp-content/cache/autoptimize/11/js/autoptimize_7df793b9408f9c7fc008504be6cc1a3c.js"></script>
-
-    <?php include_once("C:/xampp\htdocs\wiki\app/views\header.php"); ?>
     <div id="page-container" class="">
 
         <style media="screen">
             .sh-titlebar {
-                background-image: url(//cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg );
+                background-image: url('asstes/img/home-img.webp');
+                background-position: center;
             }
         </style>
         <div class="sh-titlebar sh-titlebar-center sh-titlebar-light sh-titlebar-text-style2 sh-titlebar-mobile-layout-compact sh-titlebar-mobile-title-on"
@@ -94,7 +96,7 @@
                                             <a href="https://jevelin.shufflehound.com/blog1/2016/11/23/trip-that-youll-never-forget/"
                                                 class="post-meta-date sh-default-color">November 23, 2016</a>
                                         </div>
-                                        <a href="https://jevelin.shufflehound.com/blog1/2016/11/23/trip-that-youll-never-forget/"
+                                        <a href="index.php?action=detailsPoste"
                                             class="post-title">
                                             <h2 itemprop="headline">
                                                 Trip that you’ll never ever forget </h2>
@@ -208,3 +210,8 @@
     </div>
 
 </body>
+<?php
+$content = ob_get_clean();
+
+include_once 'layout.php';
+?>

@@ -1,4 +1,6 @@
-
+<?php
+ob_start();
+?>
 
 <body
     class="post-template-default single single-post postid-93 single-format-standard theme-jevelin woocommerce-js wpb-js-composer js-comp-ver-6.7.0 vc_responsive singular sh-header-mobile-spacing-compact sh-blog-style2 carousel-dot-style1 carousel-dot-spacing-5px carousel-dot-size-standard"
@@ -151,3 +153,8 @@
         <iframe id="_hjSafeContext_31055803" title="_hjSafeContext" tabindex="-1" aria-hidden="true" src="about:blank"
             style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe>
 </body>
+<?php
+$content = ob_get_clean();
+
+include_once 'layout.php';
+?>
