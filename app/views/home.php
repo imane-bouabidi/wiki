@@ -55,75 +55,67 @@ ob_start();
                     <div id="content" class="content-with-sidebar-right blog-page-list">
                         <div class="sh-group blog-list blog-style-masonry masonry2"
                             style="position: relative; height: 4238.86px; opacity: 1;">
-                            <article id="post-93"
-                                class="post-item post-93 post type-post status-publish format-standard has-post-thumbnail hentry category-people category-travel tag-girl tag-lifestyle"
-                                itemscope="itemscope" itemtype="http://schema.org/Article"
-                                style="position: absolute; left: 0px; top: 0px;">
-                                <div class="post-container">
-                                    <div class="post-meta-thumb">
-                                        <img width="1024" height="777"
-                                            src="https://jevelin.shufflehound.com/blog1/wp-content/uploads/sites/11/2016/11/1-1024x777.jpg"
-                                            class="attachment-large size-large wp-post-image" alt="" loading="lazy"
-                                            srcset="https://jevelin.shufflehound.com/blog1/wp-content/uploads/sites/11/2016/11/1-1024x777.jpg 1024w, https://jevelin.shufflehound.com/blog1/wp-content/uploads/sites/11/2016/11/1-300x228.jpg 300w, https://jevelin.shufflehound.com/blog1/wp-content/uploads/sites/11/2016/11/1-768x583.jpg 768w, https://jevelin.shufflehound.com/blog1/wp-content/uploads/sites/11/2016/11/1.jpg 1920w"
-                                            sizes="(max-width: 1024px) 100vw, 1024px">
-                                        <div class="sh-overlay-style1">
-                                            <div class="sh-table-full">
+                            <?php foreach ($wikisDATA as $wiki) { ?>
+                                <article id="post-93"
+                                    class="post-item post-93 post type-post status-publish format-standard has-post-thumbnail hentry category-people category-travel tag-girl tag-lifestyle"
+                                    itemscope="itemscope" itemtype="http://schema.org/Article"
+                                    style="position: absolute; left: 0px; top: 0px;">
+                                    <div class="post-container">
+                                        <div class="post-meta-thumb">
+                                            <img width="1024" height="777" src="asstes/img/<?= $wiki->getImage() ?>"
+                                                class="attachment-large size-large wp-post-image" alt="" loading="lazy"
+                                                sizes="(max-width: 1024px) 100vw, 1024px">
+                                            <div class="sh-overlay-style1">
+                                                <div class="sh-table-full">
+                                                    <!-- lien vers detail wiki -->
+                                                    <a href="https://jevelin.shufflehound.com/blog1/2016/11/23/trip-that-youll-never-forget/"
+                                                        class="sh-overlay-item sh-table-cell"
+                                                        title="Open the article - Trip that you’ll never ever forget">
+                                                        <div class="sh-overlay-item-container">
+                                                            <i class="icon-link"></i>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="post-content-container">
+                                            <div class="post-meta post-meta-one">
+                                                <span class="post-meta-author">
+                                                    by <a class="bypostauthor" itemprop="url" rel="author">
+                                                        <?= $user->getUserById($wiki->getIdUser())->getUserName() ?>
+                                                    </a>
+                                                </span>
+                                                <time class="updated semantic" itemprop="dateModified"
+                                                    datetime="2016-11-23T23:47:24+00:00"></time>
                                                 <a href="https://jevelin.shufflehound.com/blog1/2016/11/23/trip-that-youll-never-forget/"
-                                                    class="sh-overlay-item sh-table-cell"
-                                                    title="Open the article - Trip that you’ll never ever forget">
-                                                    <div class="sh-overlay-item-container">
-                                                        <i class="icon-link"></i>
-                                                    </div>
+                                                    class="post-meta-date sh-default-color">
+                                                    <?= $wiki->getDateCreation() ?>
                                                 </a>
-                                                <a href="https://jevelin.shufflehound.com/blog1/wp-content/uploads/sites/11/2016/11/1-1024x777.jpg"
-                                                    class="sh-overlay-item sh-table-cell" data-rel="lightcase">
-                                                    <div class="sh-overlay-item-container">
-                                                        <i class="icon-magnifier-add"></i>
-                                                    </div>
-                                                </a>
+                                            </div>
+                                            <a href="index.php?action=detailsPoste" class="post-title">
+                                                <h2 itemprop="headline">
+                                                    <?= $wiki->getTitre() ?>
+                                                </h2>
+                                            </a>
+                                            <div class="post-content" itemprop="text">
+                                                <?= $wiki->getContenu() ?>
+                                            </div>
+                                            <div class="post-meta post-meta-two">
+                                                <div class="sh-columns post-meta-comments">
+                                                    <span class="post-meta-categories">
+                                                        <i class="icon-tag"></i>
+                                                        <a href=""
+                                                            rel="category tag">People</a>, <a
+                                                            href=""
+                                                            rel="category tag"><?= $cat->getCatById($wiki->getIdCat())->getCatName() ?></a> </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="post-content-container">
-                                        <div class="post-meta post-meta-one">
-                                            <span class="post-meta-author">
-                                                by <a href="https://jevelin.shufflehound.com/blog1/author/shufflehound/"
-                                                    class="bypostauthor" itemprop="url" rel="author">
-                                                    shufflehound </a>
-                                            </span>
-                                            <time class="updated semantic" itemprop="dateModified"
-                                                datetime="2016-11-23T23:47:24+00:00"></time>
-                                            <a href="https://jevelin.shufflehound.com/blog1/2016/11/23/trip-that-youll-never-forget/"
-                                                class="post-meta-date sh-default-color">November 23, 2016</a>
-                                        </div>
-                                        <a href="index.php?action=detailsPoste"
-                                            class="post-title">
-                                            <h2 itemprop="headline">
-                                                Trip that you’ll never ever forget </h2>
-                                        </a>
-                                        <div class="post-content" itemprop="text">
-                                            Quisque dictum eros nisl, a maximus massa accumsan non. Aliquam erat
-                                            volutpat. Quisque at finibus dui. Praesent… </div>
-                                        <div class="post-meta post-meta-two">
-                                            <div class="sh-columns post-meta-comments">
-                                                <span class="post-meta-categories">
-                                                    <i class="icon-tag"></i>
-                                                    <a href="https://jevelin.shufflehound.com/blog1/category/people/"
-                                                        rel="category tag">People</a>, <a
-                                                        href="https://jevelin.shufflehound.com/blog1/category/travel/"
-                                                        rel="category tag">Travel</a> </span>
-                                                <meta itemprop="interactionCount" content="UserComments:0">
-                                                <a href="https://jevelin.shufflehound.com/blog1/2016/11/23/trip-that-youll-never-forget/#comments"
-                                                    class="post-meta-comments">
-                                                    <i class="icon icon-bubble"></i>
-                                                    0 </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
+                                </article>
+                            <?php } ?>
                         </div>
-                        <div class="sh-pagination sh-default-color">
+                        <!-- <div class="sh-pagination sh-default-color">
                             <ul class="page-numbers">
                                 <li><span aria-current="page" class="page-numbers current">1</span></li>
                                 <li><a class="page-numbers" href="https://jevelin.shufflehound.com/blog1/page/2/">2</a>
@@ -131,7 +123,7 @@ ob_start();
                                 <li><a class="next page-numbers"
                                         href="https://jevelin.shufflehound.com/blog1/page/2/">Next</a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                     <div id="sidebar" class="sidebar-right" role="complementary" itemscope="itemscope"
                         itemtype="http://schema.org/WPSideBar">

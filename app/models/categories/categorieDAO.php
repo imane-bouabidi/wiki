@@ -19,6 +19,16 @@ class CategoryDAO
         }
         return $cats;
     }
+    public function getCatById($id)
+    {
+        $query = "SELECT * FROM categorie where idCat= '$id'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch();
+            $cats = new Categorie($row['idCat'], $row['cat_name'], $row['date_creation']);
+
+        return $cats;
+    }
 
     // public function getBusById($busID)
     // {

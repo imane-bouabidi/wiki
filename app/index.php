@@ -21,7 +21,7 @@ $home = new HomeController();
 $category = new CategorieController();
 $tag = new TagController();
 $admin = new AdminController();
-$wiki = new AdminController();
+$wiki = new WikiController();
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -64,7 +64,7 @@ if (isset($_GET['action'])) {
             $tag->updateTag();
             break;
         case 'addWiki':
-            $wiki->updateTag();
+            $wiki->addWiki();
             break;
 
         default:

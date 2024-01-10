@@ -10,7 +10,8 @@ class Wiki {
     public $isActive;
     public $idUser;
 
-    public function __construct($titre, $contenu,$tags, $idCat, $dateCreation, $image, $isActive, $idUser) {
+    public function __construct($idWiki,$titre, $contenu,$tags, $idCat, $dateCreation, $image, $isActive, $idUser) {
+        $this->idWiki = $idWiki;
         $this->titre = $titre;
         $this->contenu = $contenu;
         $this->tags = $tags;
@@ -51,5 +52,8 @@ class Wiki {
 
     public function getIdUser() {
         return $this->idUser;
+    }
+    public function getTags() {
+        return $this->tags;
     }
 }

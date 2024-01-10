@@ -1,6 +1,10 @@
 <?php
 class HomeController {
     public function ShowHome() {
+        $wikis = new WikiDAO();
+        $user = new UserDAO();
+        $cat = new CategoryDAO();
+        $wikisDATA = $wikis->getAllWikis();
         include 'views\home.php';
     }
     public function ShowSignUp() {

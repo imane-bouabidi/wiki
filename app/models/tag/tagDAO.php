@@ -20,6 +20,28 @@ class TagDAO
         }
         return $tags;
     }
+    public function getTagById($id)
+    {
+        $query = "SELECT * FROM tag where idTag = '$id'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch();
+            $tags = new Tag($row['idTag'], $row['tag_name']);
+        return $tags;
+    }
+    public function getTagsForWiki($idWiki)
+    {
+        $query = "SELECT * FROM wiki_tags where idWiki = '$idWiki'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $tags = getTagById($idWiki);
+        foreach ($result as $row) {
+            $tags[] = $tag->;
+
+        }
+        return $tags;
+    }
 
     // public function getBusById($busID)
     // {
