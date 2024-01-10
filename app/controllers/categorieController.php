@@ -10,11 +10,15 @@ class CategorieController {
     }
     public function updateCat() {
         $id = $_GET['id'];   
-        $nom = $_POST['catName'];   
+        $nom = $_POST['updatedCatName'];   
         $category = new CategoryDAO();
         $category->updateCat($id,$nom);
         include_once 'views\adminDashboard.php';
     }
+    public function deleteCat() {
+        $id = $_GET['id'];   
+        $cat = new CategoryDAO();
+        $cat->deleteCat($id);
+    }
 
-    // Ajoutez d'autres méthodes pour mettre à jour, supprimer, etc.
 }

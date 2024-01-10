@@ -44,36 +44,31 @@ class TagDAO
         header('Location:index.php?action=adminDash');
     }
 
-    // public function updateBus($bus)
-    // {
-    //     $busID = $bus->getBusID();
-    //     $busNumber = $bus->getBusNumber();
-    //     $licensePlate = $bus->getLicensePlate();
-    //     $companyID = $bus->getCompanyID(); // This line is causing the issue
-    //     $capacity = $bus->getCapacity();
+    public function updateTag($id,$nom)
+    {
+        $query = "UPDATE tag SET tag_name = :nom
+                  WHERE idTag = :id";
 
-    //     $query = "UPDATE Bus SET busNumber = :busNumber, licensePlate = :licensePlate, 
-    //               companyID = :companyID, capacity = :capacity 
-    //               WHERE busID = :busID";
-    //     $params = [
-    //         ':busID' => $busID,
-    //         ':busNumber' => $busNumber,
-    //         ':licensePlate' => $licensePlate,
-    //         ':companyID' => $companyID,
-    //         ':capacity' => $capacity
-    //     ];
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':id', $id);
 
-    //     $this->execute($query, $params);
-    // }
+        $stmt->execute();
+        header('Location:index.php?action=adminDash');
+
+    }
 
 
-    // public function deleteBus($busID)
-    // {
-    //     $query = "DELETE FROM Bus WHERE busID = :busID";
-    //     $params = [':busID' => $busID];
+    public function deleteTag($id)
+    {
+        $query = "DELETE FROM tag WHERE idTag = :idTag";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':idTag', $id);
+        $stmt->execute();
+        header('Location:index.php?action=adminDash');
 
-    //     return $this->execute($query, $params);
-    // }
+    }
 }
 
 

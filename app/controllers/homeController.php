@@ -10,6 +10,10 @@ class HomeController {
         include 'views\logIn.php';
     }
     public function Showaddwiki() {
+        $tags = new TagDAO();
+        $tagsDATA = $tags->getAllTags();
+        $cats = new CategoryDAO();
+        $catsDATA = $cats->getAllCategories();
         include 'views\addWiki.php';
     }
     public function ShowdetailsPoste() {

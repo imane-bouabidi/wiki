@@ -49,10 +49,6 @@ class CategoryDAO
     {
         $query = "UPDATE categorie SET cat_name = :nom
                   WHERE idCat = :id";
-        $params = [
-            ':nom' => $nom,
-            ':id' => $id
-        ];
 
         $stmt = $this->pdo->prepare($query);
         
@@ -60,16 +56,19 @@ class CategoryDAO
         $stmt->bindParam(':id', $id);
 
         $stmt->execute();
+        header('Location:index.php?action=adminDash');
+
     }
 
 
-    // public function deleteBus($busID)
-    // {
-    //     $query = "DELETE FROM Bus WHERE busID = :busID";
-    //     $params = [':busID' => $busID];
-
-    //     return $this->execute($query, $params);
-    // }
+    public function deleteCat($id)
+    {
+        $query = "DELETE FROM categorie WHERE idCat = :idCat";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':idCat', $id);
+        $stmt->execute();
+        header('Location:index.php?action=adminDash');
+    }
 }
 
 

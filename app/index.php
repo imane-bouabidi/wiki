@@ -21,6 +21,7 @@ $home = new HomeController();
 $category = new CategorieController();
 $tag = new TagController();
 $admin = new AdminController();
+$wiki = new AdminController();
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -51,7 +52,19 @@ if (isset($_GET['action'])) {
             $tag->addTag();
             break;
         case 'updateCat':
-            $category->addTag();
+            $category->updateCat();
+            break;
+        case 'deleteCat':
+            $category->deleteCat();
+            break;
+        case 'deleteTag':
+            $tag->deleteTag();
+            break;
+        case 'updateTag':
+            $tag->updateTag();
+            break;
+        case 'addWiki':
+            $wiki->updateTag();
             break;
 
         default:

@@ -11,4 +11,17 @@ class TagController {
         include_once 'views\adminDashboard.php';
     }
 
+    public function updateTag() {
+        $id = $_GET['id'];   
+        $nom = $_POST['updatedTagName'];   
+        $tag = new TagDAO();
+        $tag->updateTag($id,$nom);
+        include_once 'views\adminDashboard.php';
+    }
+    public function deleteTag() {
+        $id = $_GET['id'];   
+        $tag = new TagDAO();
+        $tag->deleteTag($id);
+    }
+
 }
