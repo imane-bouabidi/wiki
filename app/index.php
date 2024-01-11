@@ -16,12 +16,13 @@ include_once __DIR__ . "../controllers/adminController.php";
 include_once  __DIR__ . "..\models\config\connexion.php";
 include_once  __DIR__ .  "..\models\config\db_config.php";
 // include_once("");
-
+session_start();
 $home = new HomeController();
 $category = new CategorieController();
 $tag = new TagController();
 $admin = new AdminController();
 $wiki = new WikiController();
+$user = new UserController();
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -33,8 +34,20 @@ if (isset($_GET['action'])) {
         case 'signUp':
             $home->ShowSignUp();
             break;
+        case 'logOut':
+            $home->logOut();
+            break;
+        case 'authorDash':
+            $home->ShowAuthorDash();
+            break;
+        case 'signUpSubmit':
+            $user->addUser();
+            break;
         case 'logIn':
             $home->ShowLogIn();
+            break;
+        case 'logInSubmit':
+            $user->logInSubmit();
             break;
         case 'addwiki':
             $home->Showaddwiki();
@@ -74,6 +87,15 @@ if (isset($_GET['action'])) {
             break;
         case 'hideToShowWiki':
             $wiki->hideToShowWiki();
+            break;
+        case 'deleteWiki':
+            $wiki->deleteWiki();
+            break;
+        case 'showUpdateWiki':
+            $wiki->showUpdateWiki();
+            break;
+        case 'updateWiki':
+            $wiki->UpdateWiki();
             break;
 
         default:

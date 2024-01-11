@@ -7,9 +7,10 @@ USE wiki;
 -- Table des utilisateurs
 CREATE TABLE Users (
     idUser INT AUTO_INCREMENT PRIMARY KEY,
-    user_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    user_name VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('author','admin') DEFAULT 'author';
 );
 
 -- Table des catégories

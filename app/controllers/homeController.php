@@ -14,8 +14,19 @@ class HomeController {
     public function ShowSignUp() {
         include 'views\signUp.php';
     }
+    public function logOut() {
+        session_destroy();
+        header('Location:index.php?action=home');
+    }
     public function ShowLogIn() {
         include 'views\logIn.php';
+    }
+    public function ShowAuthorDash() {
+        $wikis = new WikiDAO();
+        $wikisDATA = $wikis->getAllWikis();
+        $cats = new CategoryDAO();
+        $catsDATA = $cats->getAllCategories();
+        include 'views\authorDashboard.php';
     }
     public function Showaddwiki() {
         $tags = new TagDAO();

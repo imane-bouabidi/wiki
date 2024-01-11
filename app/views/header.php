@@ -1,5 +1,3 @@
-
-
 <div role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
     <header class="primary-mobile" style="height: 60px;">
         <div id="header-mobile" class="sh-header-mobile">
@@ -8,7 +6,7 @@
                     <div class="sh-table">
                         <div class="sh-table-cell sh-group">
                             <div class="header-logo sh-group-equal">
-                                <a href="//jevelin.shufflehound.com/hello/" class="header-logo-container sh-table-small"
+                                <a href="index.php?action=home" class="header-logo-container sh-table-small"
                                     rel="home">
                                     <div class="sh-table-cell">
                                         <img class=" w-4"
@@ -88,7 +86,7 @@
                     <div class="sh-table">
                         <div class="sh-table-cell sh-group">
                             <div class="header-logo sh-group-equal">
-                                <a href="//jevelin.shufflehound.com/hello/" class="header-logo-container sh-table-small"
+                                <a href="index.php?action=home" class="header-logo-container sh-table-small"
                                     rel="home">
                                     <div class="sh-table-cell">
                                         <!-- <div style="display: flex; flex-direction : column;">
@@ -107,6 +105,7 @@
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-7">
                                             <a href="index.php?action=home">Home</a>
                                         </li>
+                                        <?php if(empty($_SESSION['admin'])&& empty($_SESSION['author'])){?>
                                         <li id="menu-item-112"
                                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-112">
                                             <a href="index.php?action=signUp">Sign Up</a>
@@ -115,13 +114,20 @@
                                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111">
                                             <a href="index.php?action=logIn">Log In</a>
                                         </li>
+                                        <?php }?>
                                         <li id="menu-item-111"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111">
-                                            <a href="index.php?action=addwiki">Add wiki</a>
-                                        </li>
-                                        <li class="menu-item sh-nav-search sh-nav-special">
-                                            <a href="#"><i class="icon icon-magnifier"></i></a>
-                                        </li>
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111">
+                                        <a href="index.php?action=addwiki">Add wiki</a>
+                                    </li>
+                                    <?php if(!empty($_SESSION['admin'])|| !empty($_SESSION['author'])){?>
+                                    <li id="menu-item-112"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-112">
+                                        <a href="index.php?action=logOut">Log Out</a>
+                                    </li>
+                                    <?php }?>
+                                    <li class="menu-item sh-nav-search sh-nav-special">
+                                        <a href="#"><i class="icon icon-magnifier"></i></a>
+                                    </li>
                                     </ul>
                                 </div>
                             </nav>

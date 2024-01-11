@@ -37,6 +37,39 @@ class WikiDAO
         header('Location:index.php?action=home');
 
     }
+    public function UpdateWiki($wiki)
+    {
+        $query = $this->pdo->prepare("UPDATE wiki SET titre = :titre, contenu = :contenu, idCat = :idCat, date_creation = :date_creation, image = :image, isActive = :isActive, idUser = :idUser WHERE idWiki = :idWiki");
+        $idWiki = $wiki->getIdWiki();
+        $titre = $wiki->getTitre();
+        $contenu = $wiki->getContenu();
+        $idCat = $wiki->getIdCat();
+        $date_creation = $wiki->getDateCreation();
+        $image = $wiki->getImage();
+        $isActive = $wiki->getIsActive();
+        $idUser = $wiki->getIdUser();
+        $query->bindParam(':titre', $titre);
+        $query->bindParam(':contenu', $contenu);
+        $query->bindParam(':idCat', $idCat);
+        $query->bindParam(':date_creation', $date_creation);
+        $query->bindParam(':image', $image);
+        $query->bindParam(':isActive', $isActive);
+        $query->bindParam(':idUser', $idUser);
+        $query->bindParam(':idWiki', $idWiki);
+        $query->execute();
+
+        $query2 = $this->pdo->prepare("DELETE FROM wiki_tags WHERE idWiki = :idWiki");
+        $query2->bindParam(':idWiki', $idWiki);
+        $query2->execute();
+        foreach ($wiki->getTags() as $tag) {
+            $query = $this->pdo->prepare("INSERT INTO wiki_tags (idWiki,idTag) VALUES (:idWiki,:idTag)");
+            $query->bindParam(':idWiki', $idWiki);
+            $query->bindParam(':idTag', $tag);
+            $query->execute();
+
+        }
+        header('Location:index.php?action=authorDash');
+    }
 
     public function getAllWikis()
     {
@@ -94,6 +127,12 @@ public function hideWiki($id){
     $stmt = $this->pdo->prepare($query);
     $stmt->execute();
     header('Location:index.php?action=wikiManagement');
+}
+public function deleteWiki($id){
+    $query = "DELETE FROM wiki WHERE idWiki = '$id'";
+    $stmt = $this->pdo->prepare($query);
+    $stmt->execute();
+    header('Location:index.php?action=authorDash');
 }
 public function hideToShowWiki($id){
     $query = "UPDATE wiki SET isActive =0 WHERE idWiki = '$id'";
