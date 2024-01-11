@@ -66,6 +66,15 @@ if (isset($_GET['action'])) {
         case 'addWiki':
             $wiki->addWiki();
             break;
+        case 'wikiManagement':
+            $admin->showWikis();
+            break;
+        case 'hideWiki':
+            $wiki->hideWiki();
+            break;
+        case 'hideToShowWiki':
+            $wiki->hideToShowWiki();
+            break;
 
         default:
             $home->ShowHome();

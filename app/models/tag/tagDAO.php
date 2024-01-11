@@ -25,8 +25,8 @@ class TagDAO
         $query = "SELECT * FROM tag where idTag = '$id'";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
-        $row = $stmt->fetch();
-            $tags = new Tag($row['idTag'], $row['tag_name']);
+        $result = $stmt->fetch();
+            $tags = $result['tag_name'];
         return $tags;
     }
     public function getTagsForWiki($idWiki)
@@ -35,10 +35,9 @@ class TagDAO
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll();
-        $tags = getTagById($idWiki);
+        $tags = array();
         foreach ($result as $row) {
-            $tags[] = $tag->;
-
+            $tags[] = $this->getTagById($row['idTag']);
         }
         return $tags;
     }
@@ -66,13 +65,13 @@ class TagDAO
         header('Location:index.php?action=adminDash');
     }
 
-    public function updateTag($id,$nom)
+    public function updateTag($id, $nom)
     {
         $query = "UPDATE tag SET tag_name = :nom
                   WHERE idTag = :id";
 
         $stmt = $this->pdo->prepare($query);
-        
+
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':id', $id);
 

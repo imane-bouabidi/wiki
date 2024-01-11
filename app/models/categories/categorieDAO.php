@@ -30,18 +30,22 @@ class CategoryDAO
         return $cats;
     }
 
-    // public function getBusById($busID)
-    // {
-    //     $query = "SELECT * FROM Bus WHERE busID = :busID";
-    //     $params = [':busID' => $busID];
-    //     $result = $this->fetch($query, $params);
-
-    //     // Assuming you have a CompanyDAO and a Company class
-    //     $companyDAO = new CompanyDAO();
-    //     $company = $companyDAO->getCompanyById($result['companyID']);
-
-    //     return new Bus($result['busID'], $result['busNumber'], $result['licensePlate'], $company, $result['capacity']);
-    // }
+    public function getLatestCats($limit = 3)
+{
+    $query = "SELECT * FROM categorie ORDER BY date_creation DESC LIMIT :limit";
+    $stmt = $this->pdo->prepare($query);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    $result = $stmt->fetchAll();
+    $cats = array();
+    
+    foreach ($result as $row) {
+        $cats[] = new Categorie($row['idCat'], $row['cat_name'], $row['date_creation']);
+    }
+    
+    return $cats;
+}
 
     public function addCatgory($date, $catName)
     {

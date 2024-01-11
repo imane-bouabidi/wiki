@@ -19,7 +19,7 @@ ob_start();
         content="Powered by Slider Revolution 6.6.18 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface.">
     <script
         src="https://jevelin.shufflehound.com/blog1/wp-content/cache/autoptimize/11/js/autoptimize_055e7365edf74e9be21ad12110cd770f.js"></script>
-        <?php include_once("C:/xampp\htdocs\wiki\app/views\header.php"); ?>
+    <?php include_once("C:/xampp\htdocs\wiki\app/views\header.php"); ?>
 
     <div id="page-container" class="">
 
@@ -33,13 +33,12 @@ ob_start();
                                 class="post-item post-item-single post-93 post type-post status-publish format-standard has-post-thumbnail hentry category-people category-travel tag-girl tag-lifestyle">
                                 <div class="post-container">
                                     <div class="post-meta-thumb">
-                                        <img width="1200" height="675"
-                                            src="https://jevelin.shufflehound.com/blog1/wp-content/uploads/sites/11/2016/11/1-1200x675.jpg"
+                                        <img width="1200" height="675" src="asstes/img/<?= $wikiDATA->getImage() ?>"
                                             class="attachment-jevelin-landscape-large size-jevelin-landscape-large wp-post-image"
                                             alt="" loading="lazy">
                                         <div class="sh-overlay-style1">
                                             <div class="sh-table-full">
-                                                <a href="https://jevelin.shufflehound.com/blog1/wp-content/uploads/sites/11/2016/11/1-1024x777.jpg"
+                                                <a 
                                                     class="sh-overlay-item sh-table-cell" data-rel="lightcase">
                                                     <div class="sh-overlay-item-container">
                                                         <i class="icon-magnifier-add"></i>
@@ -48,46 +47,39 @@ ob_start();
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="https://jevelin.shufflehound.com/blog1/2016/11/23/trip-that-youll-never-forget/"
-                                        class="post-title">
-                                        <h1 itemprop="headline">Trip that you’ll never ever forget</h1>
+                                    <a class="post-title">
+                                        <h1 itemprop="headline">
+                                            <?= $wikiDATA->getTitre() ?>
+                                        </h1>
                                     </a>
                                     <div class="post-meta-data sh-columns">
                                         <div class="post-meta post-meta-one">
                                             <span class="post-meta-author">
-                                                by <a href="https://jevelin.shufflehound.com/blog1/author/shufflehound/"
-                                                    class="bypostauthor" itemprop="url" rel="author">
-                                                    shufflehound </a>
+                                                by <a class="bypostauthor" itemprop="url" rel="author">
+                                                    <?= $user->getUserById($wikiDATA->getIdUser())->getUserName() ?>
+                                                </a>
                                             </span>
                                             <time class="updated semantic" itemprop="dateModified"
                                                 datetime="2016-11-23T23:47:24+00:00"></time>
-                                            <a href="https://jevelin.shufflehound.com/blog1/2016/11/23/trip-that-youll-never-forget/"
-                                                class="post-meta-date sh-default-color">November 23, 2016</a>
+                                            <a class="post-meta-date sh-default-color">
+                                                <?= $wikiDATA->getDateCreation() ?>
+                                            </a>
                                         </div>
                                         <div class="post-meta post-meta-two">
                                             <div class="sh-columns post-meta-comments">
-                                                <span class="post-meta-categories">
+                                                <span class="post-meta-categories ">
                                                     <i class="icon-tag"></i>
-                                                    <a href="https://jevelin.shufflehound.com/blog1/category/people/"
-                                                        rel="category tag">People</a>, <a
-                                                        href="https://jevelin.shufflehound.com/blog1/category/travel/"
-                                                        rel="category tag">Travel</a> </span>
+                                                    <a href="" rel="category tag">
+                                                        <?= $cat->getCatById($wikiDATA->getIdCat())->getCatName() ?>
+                                                    </a></span>
                                                 <meta itemprop="interactionCount" content="UserComments:0">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="post-content" itemprop="text">
-                                        <p><span class="sh-dropcaps" style="font-size: 18px;">Q</span>uisque dictum eros
-                                            nisl, a maximus massa accumsan non. Aliquam erat volutpat. Quisque at
-                                            finibus dui. Praesent cursus, dui sed tempus mollis, turpis ex porta lacus,
-                                            ut egestas justo nibh in nisi. Donec arcu enim, congue in nunc ut, cursus
-                                            sollicitudin urna. Pellentesque magna purus, accumsan varius mi et, gravida
-                                            consectetur purus. Etiam mattis molestie aliquet. Aenean diam enim, faucibus
-                                            et sodales id, iaculis vitae lectus. Duis sed consequat quam. Ut tincidunt
-                                            eleifend pretium. Suspendisse nisl turpis, dapibus ac vestibulum nec,
-                                            venenatis eu arcu. Etiam et fermentum ante. Curabitur eget diam sem. Fusce
-                                            pulvinar turpis vel arcu pharetra bibendum. Integer leo libero, convallis
-                                            nec nisi eu, aliquam tempus leo.</p>
+                                        <p><span class="sh-dropcaps" style="font-size: 18px;">Q</span>
+                                            <?= $wikiDATA->getContenu() ?>
+                                        </p>
                                     </div>
                                 </div>
                             </article>
@@ -96,14 +88,19 @@ ob_start();
                             <div class="sh-blog-tags">
                                 <h5>Tags In</h5>
                                 <div class="sh-blog-tags-list">
-                                    <a href="https://jevelin.shufflehound.com/blog1/tag/girl/" class="sh-blog-tag-item">
-                                        Girl </a>
-                                    <a href="https://jevelin.shufflehound.com/blog1/tag/lifestyle/"
-                                        class="sh-blog-tag-item">
-                                        Lifestyle </a>
+                                    <?php $tagsDATA = $tagDAO->getTagsForWiki($wikiDATA->getIdWiki());
+                                    // print_r($tagsDATA);
+                                    foreach ($tagsDATA as $tag) {
+                                        ?>
+                                        <a href=""
+                                            class="sh-blog-tag-item inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
+                                            rel="category tag">
+                                            <?= $tag ?>
+                                        </a>
+                                    <?php } ?>
                                 </div>
                             </div>
-                            <div class="sh-comments" id="comments">
+                            <!-- <div class="sh-comments" id="comments">
                                 <div class="sh-comment-form">
                                     <div id="respond" class="comment-respond">
                                         <h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a
@@ -139,15 +136,15 @@ ob_start();
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
                 <?php include_once('C:\xampp\htdocs\wiki\app\views\footer.php') ?>
             </div>
-            <div class="sh-back-to-top sh-back-to-top3">
+            <!-- <div class="sh-back-to-top sh-back-to-top3">
                 <i class="icon-arrow-up"></i>
-            </div>
+            </div> -->
         </div>
 
         <iframe id="_hjSafeContext_31055803" title="_hjSafeContext" tabindex="-1" aria-hidden="true" src="about:blank"
@@ -155,6 +152,5 @@ ob_start();
 </body>
 <?php
 $content = ob_get_clean();
-
 include_once 'layout.php';
 ?>

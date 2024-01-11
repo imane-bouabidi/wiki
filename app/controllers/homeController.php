@@ -2,9 +2,13 @@
 class HomeController {
     public function ShowHome() {
         $wikis = new WikiDAO();
+        $latestWikis = $wikis->getLatestWikis();
+        $wikisDATA = $wikis->getAllWikis();
         $user = new UserDAO();
         $cat = new CategoryDAO();
-        $wikisDATA = $wikis->getAllWikis();
+        $latestCats = $cat->getLatestCats();
+        $catDATA = $cat->getAllCategories();
+        $tagDAO = new TagDAO();
         include 'views\home.php';
     }
     public function ShowSignUp() {
@@ -21,6 +25,12 @@ class HomeController {
         include 'views\addWiki.php';
     }
     public function ShowdetailsPoste() {
+        $id = $_GET['id'];
+        $wiki = new WikiDAO();
+        $user = new UserDAO();
+        $cat = new CategoryDAO();
+        $tagDAO = new TagDAO();
+        $wikiDATA = $wiki->getWikiById($id);
         include 'views\detailsPoste.php';
     }
 
