@@ -26,26 +26,35 @@ class UserDAO
 
     public function registerUser($userName, $email, $password, $confirmPassword)
     {
-        try {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $userName = filter_var($userName, FILTER_SANITIZE_STRING);
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo '<div style="text-align: center; background-color: red; color: white">Invalid email format.</div>';
+            return;
+        }
 
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+        try {
             $query = $this->pdo->prepare("INSERT INTO users (user_name, email, password) VALUES (:userName, :email, :password)");
             $query->bindParam(':userName', $userName);
             $query->bindParam(':email', $email);
             $query->bindParam(':password', $hashedPassword);
             $query->execute();
-
-            echo '<div style="text-align : center; background-color : green; color : white">Registered successfully</div>';
+    
+            echo '<div style="text-align: center; background-color: green; color: white">Registered successfully</div>';
             header('Location: index.php?action=logIn');
         } catch (PDOException $e) {
             if ($e->getCode() == 23000) {
-                echo '<div style="text-align : center; background-color : red; color : white">Username or email are already taken. Please choose a different username.</div>';
+                echo '<div style="text-align: center; background-color: red; color: white">Username or email are already taken. Please choose a different username.</div>';
             } else {
-                echo '<div style="text-align : center; background-color : red; color : white">An error occurred during registration.</div>';
+                echo '<div style="text-align: center; background-color: red; color: white">An error occurred during registration.</div>';
                 error_log($e->getMessage());
             }
         }
     }
+    
 
 
     public function loginUser($email, $password)
