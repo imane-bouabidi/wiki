@@ -26,9 +26,10 @@ ob_start();
                     <div class="sh-table-cell">
                         <div class="titlebar-title">
                             <h2 class="titlebar-title-h1">
-                                Home </h2>
+                            Welcome to Wiki™!  </h2>
                             <div class="sh-titlebar-desc">
-                                <p>Masonry + boxel layout</p>
+                                <p>Explore a world of knowledge and information on our wiki platform.
+</p>
                             </div>
                         </div>
                     </div>
@@ -179,8 +180,8 @@ ob_start();
                                 } ?>
                             </div>
                         </div>
-                        <div id="search-2" class="widget-item widget_search">
-                            <form method="get" class="search-form" action="https://jevelin.shufflehound.com/blog1/">
+                        <!-- <div id="search-2" class="widget-item widget_search">
+                            <form method="get" class="search-form" action="">
                                 <div>
                                     <label>
                                         <input type="search" id="search" class="sh-sidebar-search search-field"
@@ -192,7 +193,7 @@ ob_start();
                                     </button>
                                 </div>
                             </form>
-                        </div>
+                        </div> -->
                         <div id="tag_cloud-2" class="widget-item widget_tag_cloud">
                             <h3 class="widget-title">Categories recents</h3>
                             <div class="tagcloud">

@@ -1,9 +1,4 @@
 <?php
-
-include_once '../controllers/categorieController.php';
-include_once  "../controllers/tagController.php";
-include_once "../controllers/userController.php";
-include_once "../controllers/wikiController.php";
 include_once "../models/categories/categorieDAO.php";
 include_once "../models/categories/categorie.php";
 include_once "../models/tag/tagDAO.php";
@@ -12,10 +7,8 @@ include_once "../models/user/userDAO.php";
 include_once "../models/user/user.php";
 include_once "../models/wiki/wikiDAO.php";
 include_once "../models/wiki/wiki.php";
-include_once "../controllers/homeController.php";
-include_once "../controllers/adminController.php";
-include_once  "..\models\config\connexion.php";
-include_once   "..\models\config\db_config.php";
+include_once  "../models/config/connexion.php";
+include_once   "../models/config/db_config.php";
 $wikisDAO = new WikiDAO();
 $tagsDAO = new TagDAO();
 $catgsDAO = new CategoryDAO();

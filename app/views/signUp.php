@@ -9,9 +9,9 @@ ob_start();
     </style>
 
     <div class="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
-        <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
-            <div class="md:flex w-full">
-                <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
+        <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-1/2 overflow-hidden" style="max-width:1000px">
+            <div class=" w-full">
+                <div class="w-full  py-10 px-5 md:px-10">
                     <div class="text-center mb-10">
                         <h1 class="font-bold text-3xl text-gray-900">REGISTER</h1>
                         <p>Enter your information to register</p>
@@ -28,7 +28,7 @@ ob_start();
                                         </div>
                                         <input type="text" id="userName" name="userName"
                                             class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                                            placeholder="John" required pattern="[a-zA-Z]+">
+                                            placeholder="John" required>
                                     </div>
                                     <div id="userNameError" class="text-xs text-red-500 mt-1"></div>
                                 </div>
@@ -110,7 +110,7 @@ ob_start();
             var userNameInput = document.getElementById('userName');
             var emailInput = document.getElementById('email');
             var passwordInput = document.getElementById('password');
-            var confirmPasswordInput = document.getElementById('confirmpassword');
+            var confirmPasswordInput = document.getElementById('confirmPassword');
 
             userNameInput.addEventListener('input', function () {
                 clearError('userName');

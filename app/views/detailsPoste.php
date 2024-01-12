@@ -29,23 +29,13 @@ ob_start();
                 <div class="container entry-content">
                     <div id="content" class="content">
                         <div class="blog-single blog-style-large">
-                            <article id="post-93"
-                                class="post-item post-item-single post-93 post type-post status-publish format-standard has-post-thumbnail hentry category-people category-travel tag-girl tag-lifestyle">
+                            <article
+                                class="post-item post-item-single post-93 post type-post ">
                                 <div class="post-container">
                                     <div class="post-meta-thumb">
-                                        <img width="1200" height="675" src="asstes/img/<?= $wikiDATA->getImage() ?>"
-                                            class="attachment-jevelin-landscape-large size-jevelin-landscape-large wp-post-image"
+                                        <img src="asstes/img/<?= $wikiDATA->getImage() ?>"
+                                            class=" w-24"
                                             alt="" loading="lazy">
-                                        <div class="sh-overlay-style1">
-                                            <div class="sh-table-full">
-                                                <a 
-                                                    class="sh-overlay-item sh-table-cell" data-rel="lightcase">
-                                                    <div class="sh-overlay-item-container">
-                                                        <i class="icon-magnifier-add"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                     <a class="post-title">
                                         <h1 itemprop="headline">
@@ -56,7 +46,7 @@ ob_start();
                                         <div class="post-meta post-meta-one">
                                             <span class="post-meta-author">
                                                 by <a class="bypostauthor" itemprop="url" rel="author">
-                                                    <?= $user->getUserById($wikiDATA->getIdUser())->getUserName() ?>
+                                                    <?= $users->getUserById($wikiDATA->getIdUser())->getUserName() ?>
                                                 </a>
                                             </span>
                                             <time class="updated semantic" itemprop="dateModified"
@@ -100,51 +90,11 @@ ob_start();
                                     <?php } ?>
                                 </div>
                             </div>
-                            <!-- <div class="sh-comments" id="comments">
-                                <div class="sh-comment-form">
-                                    <div id="respond" class="comment-respond">
-                                        <h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a
-                                                    rel="nofollow" id="cancel-comment-reply-link"
-                                                    href="/blog1/2016/11/23/trip-that-youll-never-forget/#respond"
-                                                    style="display:none;">Cancel reply</a></small></h3>
-                                        <form action="https://jevelin.shufflehound.com/blog1/wp-comments-post.php"
-                                            method="post" id="commentform" class="comment-form" novalidate="">
-                                            <label>Message <i class="icon-check sh-accent-color"></i></label>
-                                            <p class="comment-form-comment">
-                                                <textarea id="comment" name="comment" cols="45" rows="8"
-                                                    aria-required="true" required=""></textarea>
-                                            </p><label>Name <i class="icon-check sh-accent-color"></i> </label>
-                                            <p class="comment-form-author">
-                                                <input id="author" name="author" type="text" value="" required="">
-                                            </p>
-                                            <label>Email <i class="icon-check sh-accent-color"></i> </label>
-                                            <p class="comment-form-email">
-                                                <input id="email" name="email" type="text" value="" required="">
-                                            </p>
-                                            <label>Website </label>
-                                            <p class="comment-form-url">
-                                                <input id="url" name="url" type="text" value="">
-                                            </p>
-                                            <div class="sh-comments-required-notice">Required fields are marked <i
-                                                    class="icon-check sh-accent-color"></i></div>
-                                            <p class="form-submit"><input name="submit" type="submit" id="submit"
-                                                    class="submit" value="Send a comment"> <input type="hidden"
-                                                    name="comment_post_ID" value="93" id="comment_post_ID">
-                                                <input type="hidden" name="comment_parent" id="comment_parent"
-                                                    value="0">
-                                            </p>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
                 <?php include_once('C:\xampp\htdocs\wiki\app\views\footer.php') ?>
             </div>
-            <!-- <div class="sh-back-to-top sh-back-to-top3">
-                <i class="icon-arrow-up"></i>
-            </div> -->
         </div>
 
         <iframe id="_hjSafeContext_31055803" title="_hjSafeContext" tabindex="-1" aria-hidden="true" src="about:blank"

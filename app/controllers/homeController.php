@@ -38,7 +38,7 @@ class HomeController {
     public function ShowdetailsPoste() {
         $id = $_GET['id'];
         $wiki = new WikiDAO();
-        $user = new UserDAO();
+        $users = new UserDAO();
         $cat = new CategoryDAO();
         $tagDAO = new TagDAO();
         $wikiDATA = $wiki->getWikiById($id);

@@ -62,6 +62,9 @@ class UserDAO
                 $_SESSION['author'] = $row['idUser'];
                 header('Location:index.php?action=authorDash');
             }
+        }else{
+            echo '<div style="text-align : center; background-color : red; color : white">Username or email incorrect. Please try again.</div>';
+
         }
     }
 

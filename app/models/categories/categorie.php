@@ -1,8 +1,8 @@
 <?php
 class Categorie {
-    public $idCat;
-    public $catName;
-    public $dateCreation;
+    private $idCat;
+    private $catName;
+    private $dateCreation;
 
     public function __construct($idCat,$catName, $dateCreation) {
         $this->idCat = $idCat;

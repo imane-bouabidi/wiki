@@ -84,10 +84,10 @@
                         <div class="sh-table-cell sh-group">
                             <div class="header-logo sh-group-equal">
                                 <a href="index.php?action=home" class="header-logo-container sh-table-small" rel="home">
-                                    <div class="sh-table-cell">
-                                        <!-- <div style="display: flex; flex-direction : column;">
-                                            <img style="width: 60px;" src="asstes\img\wiki-logo.png" alt="wiki logo">
-                                        </div> -->
+                                    <div class="sh-table-cell w-24">
+                                        <div style="display: flex; flex-direction : column;">
+                                            <img style="width: 50px;" src="asstes\img\wiki-logo.png" alt="wiki logo">
+                                        </div>
                                         <h1>Wiki™</h1>
                                     </div>
                                 </a>
