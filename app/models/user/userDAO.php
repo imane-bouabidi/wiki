@@ -26,7 +26,7 @@ class UserDAO
 
     public function registerUser($userName, $email, $password, $confirmPassword)
     {
-        $userName = filter_var($userName, FILTER_SANITIZE_STRING);
+        $userName = htmlspecialchars($userName);
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
