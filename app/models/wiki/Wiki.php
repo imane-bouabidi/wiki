@@ -1,14 +1,14 @@
 <?php
 class Wiki {
-    public $idWiki;
-    public $titre;
-    public $contenu;
-    public $tags;
-    public $idCat;
-    public $dateCreation;
-    public $image;
-    public $isActive;
-    public $idUser;
+    private $idWiki;
+    private $titre;
+    private $contenu;
+    private $tags;
+    private $idCat;
+    private $dateCreation;
+    private $image;
+    private $isActive;
+    private $idUser;
 
     public function __construct($idWiki,$titre, $contenu,$tags, $idCat, $dateCreation, $image, $isActive, $idUser) {
         $this->idWiki = $idWiki;

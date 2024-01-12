@@ -20,10 +20,14 @@ class AdminController {
         include_once 'views\manageWikis.php';
     }
     public function statistics() {
-        // $wikis = new WikiDAO();
-        // $wikisDATA = $wikis->getAllWikis();
-        // $cats = new CategoryDAO();
-        // $catsDATA = $cats->getAllCategories();
+        $wikis = new WikiDAO();
+        $wikisStati = $wikis->getNumWikis();
+        $users = new UserDAO();
+        $usersStati = $users->getNumUsers();
+        $tags = new TagDAO();
+        $tagsStati = $tags->getNumTags();
+        $cats = new CategoryDAO();
+        $catsStati = $cats->getNumCtas();
         include_once 'views\statistics.php';
     }
 

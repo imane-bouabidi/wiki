@@ -140,12 +140,9 @@
                             <div class="line-test">
                                 <div class="container">
                                     <form method="get" class="sh-header-search-form"
-                                        action="https://jevelin.shufflehound.com/blog1/">
-                                        <input type="search" class="sh-header-search-input" placeholder="Search Here.."
+                                        action="">
+                                        <input type="search" id="search" class="sh-header-search-input" placeholder="Search Here.."
                                             value="" name="s" required="">
-                                        <button type="submit" class="sh-header-search-submit">
-                                            <i class="icon-magnifier"></i>
-                                        </button>
                                         <div class="sh-header-search-close close-header-search">
                                             <i class="ti-close"></i>
                                         </div>

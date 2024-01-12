@@ -31,6 +31,9 @@
     <?php require_once 'views/header.php' ?>
     
         <?= $content ?>
+        <script src="js/ajax_search.js"></script>
+
     <?php require_once 'views/footer.php' ?>
+
 </body>
 </html>

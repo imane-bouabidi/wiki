@@ -90,6 +90,14 @@ class TagDAO
         header('Location:index.php?action=adminDash');
 
     }
+    public function getNumTags()
+    {
+        $query = "SELECT count(*) as total from tag";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result['total'];
+    }
 }
 
 

@@ -6,8 +6,8 @@
                     <div class="sh-table-cell">
                         <div class="sh-copyrights-text">
                             <span class="developer-copyrights ">
-                                WordPress Theme built by <a href="https://shufflehound.com"
-                                    target="blank"><strong>Shufflehound</strong>.</a>
+                                Wiki All Rights Reserved <a href="https://shufflehound.com"
+                                    target="blank"><strong>&copy;</strong>.</a>
                             </span>
                             <span></span>
                         </div>

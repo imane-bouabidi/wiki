@@ -4,7 +4,7 @@ class HomeController {
         $wikis = new WikiDAO();
         $latestWikis = $wikis->getLatestWikis();
         $wikisDATA = $wikis->getAllWikis();
-        $user = new UserDAO();
+        $users = new UserDAO();
         $cat = new CategoryDAO();
         $latestCats = $cat->getLatestCats();
         $catDATA = $cat->getAllCategories();

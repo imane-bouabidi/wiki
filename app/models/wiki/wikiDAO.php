@@ -22,7 +22,7 @@ class WikiDAO
         $query->bindParam(':date_creation', $date_creation);
         $query->bindParam(':image', $image);
         $query->bindParam(':isActive', $isActive);
-        $query->bindParam(':idUser', $idUser); 
+        $query->bindParam(':idUser', $idUser);
         $query->execute();
 
         $idwiki = $this->pdo->lastInsertId();
@@ -79,7 +79,7 @@ class WikiDAO
         $result = $stmt->fetchAll();
         $wikis = array();
         foreach ($result as $row) {
-            $wikis[] = new Wiki($row['idWiki'], $row['titre'], $row['contenu'],0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
+            $wikis[] = new Wiki($row['idWiki'], $row['titre'], $row['contenu'], 0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
         }
         return $wikis;
     }
@@ -93,7 +93,7 @@ class WikiDAO
         $result = $stmt->fetchAll();
         $wikis = array();
         foreach ($result as $row) {
-            $wikis[] = new Wiki($row['idWiki'], $row['titre'], $row['contenu'],0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
+            $wikis[] = new Wiki($row['idWiki'], $row['titre'], $row['contenu'], 0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
         }
         return $wikis;
     }
@@ -104,56 +104,91 @@ class WikiDAO
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
         $row = $stmt->fetch();
-            $wikis = new Wiki($row['idWiki'], $row['titre'], $row['contenu'],0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
+        $wikis = new Wiki($row['idWiki'], $row['titre'], $row['contenu'], 0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
+        return $wikis;
+    }
+    public function get_wikis_for_tag($tagId)
+    {
+        $query = "SELECT * FROM wiki_tags join tag on wiki_tags.idTag = tag.idTag join wiki on wiki_tags.idWiki = wiki.idWiki where wiki_tags.idTag = '$tagId' and isActive=0";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+        $wikis= array();
+        foreach ($rows as $row){
+            $wikis[] = new Wiki($row['idWiki'], $row['titre'], $row['contenu'], 0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
+        }
+        return $wikis;
+    }
+    public function get_wikis_for_catg($catId)
+    {
+        $query = "SELECT * FROM wiki join categorie on wiki.idCat = categorie.idCat where wiki.idCat = '$catId' and isActive=0";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
+        $wikis= array();
+        foreach ($rows as $row){
+        $wikis[] = new Wiki($row['idWiki'], $row['titre'], $row['contenu'], 0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
+        }
         return $wikis;
     }
 
 
     public function getLatestWikis($limit = 3)
-{
-    $query = "SELECT * FROM wiki where isActive = 0 ORDER BY date_creation DESC LIMIT :limit";
-    $stmt = $this->pdo->prepare($query);
-    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-    $stmt->execute();
-    
-    $result = $stmt->fetchAll();
-    $wikis = array();
-    
-    foreach ($result as $row) {
-        $wikis[] = new Wiki(
-            $row['idWiki'],
-            $row['titre'],
-            $row['contenu'],
-            0,
-            $row['idCat'],
-            $row['date_creation'],
-            $row['image'],
-            $row['isActive'],
-            $row['idUser']
-        );
-    }
-    
-    return $wikis;
-}
+    {
+        $query = "SELECT * FROM wiki where isActive = 0 ORDER BY date_creation DESC LIMIT :limit";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
 
-public function hideWiki($id){
-    $query = "UPDATE wiki SET isActive = 1 WHERE idWiki = '$id'";
-    $stmt = $this->pdo->prepare($query);
-    $stmt->execute();
-    header('Location:index.php?action=wikiManagement');
-}
-public function deleteWiki($id){
-    $query = "DELETE FROM wiki WHERE idWiki = '$id'";
-    $stmt = $this->pdo->prepare($query);
-    $stmt->execute();
-    header('Location:index.php?action=authorDash');
-}
-public function hideToShowWiki($id){
-    $query = "UPDATE wiki SET isActive =0 WHERE idWiki = '$id'";
-    $stmt = $this->pdo->prepare($query);
-    $stmt->execute();
-    header('Location:index.php?action=wikiManagement');
-}
+        $result = $stmt->fetchAll();
+        $wikis = array();
+
+        foreach ($result as $row) {
+            $wikis[] = new Wiki(
+                $row['idWiki'],
+                $row['titre'],
+                $row['contenu'],
+                0,
+                $row['idCat'],
+                $row['date_creation'],
+                $row['image'],
+                $row['isActive'],
+                $row['idUser']
+            );
+        }
+
+        return $wikis;
+    }
+
+    public function hideWiki($id)
+    {
+        $query = "UPDATE wiki SET isActive = 1 WHERE idWiki = '$id'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        header('Location:index.php?action=wikiManagement');
+    }
+    public function deleteWiki($id)
+    {
+        $query = "DELETE FROM wiki WHERE idWiki = '$id'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        header('Location:index.php?action=authorDash');
+    }
+    public function hideToShowWiki($id)
+    {
+        $query = "UPDATE wiki SET isActive =0 WHERE idWiki = '$id'";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        header('Location:index.php?action=wikiManagement');
+    }
+    public function getNumWikis()
+    {
+        $query = "SELECT count(*) as total from wiki";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result['total'];
+    }
 
 
 }

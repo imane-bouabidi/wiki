@@ -83,6 +83,15 @@ class CategoryDAO
         $stmt->execute();
         header('Location:index.php?action=adminDash');
     }
+
+    public function getNumCtas()
+    {
+        $query = "SELECT count(*) as total from categorie";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result['total'];
+    }
 }
 
 

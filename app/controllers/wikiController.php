@@ -9,8 +9,7 @@ class WikiController {
         move_uploaded_file($_FILES["image"]["tmp_name"], "asstes/img/" . $image);
         $tags = $_POST['tags'];
         $idCat = $_POST['category'];
-        // $idUser = $_SESSION['idUser'];
-        $idUser = 1;
+        $idUser = $_SESSION['author'];
         $dateActuelle = date("Y-m-d H:i:s");
         $wiki = new Wiki(0,$title,$content,$tags,$idCat,$dateActuelle,$image,0,$idUser);
         $wikiDAO = new WikiDAO();

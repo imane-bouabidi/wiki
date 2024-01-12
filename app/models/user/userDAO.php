@@ -28,13 +28,13 @@ class UserDAO
     {
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    
+
             $query = $this->pdo->prepare("INSERT INTO users (user_name, email, password) VALUES (:userName, :email, :password)");
             $query->bindParam(':userName', $userName);
             $query->bindParam(':email', $email);
             $query->bindParam(':password', $hashedPassword);
             $query->execute();
-    
+
             echo '<div style="text-align : center; background-color : green; color : white">Registered successfully</div>';
             header('Location: index.php?action=logIn');
         } catch (PDOException $e) {
@@ -46,23 +46,32 @@ class UserDAO
             }
         }
     }
-    
 
-        public function loginUser($email, $password)
-        {
-            $query = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
-            $query->bindParam(':email', $email);
-            $query->execute();
-            $row = $query->fetch();
-            if (password_verify($password, $row['password'])) {
-                if($row['role']=='admin'){
-                    $_SESSION['admin'] = $row['idUser'];
-                    header('Location:index.php?action=adminDashboard');
-                }else{
-                    $_SESSION['author'] = $row['idUser'];
-                    header('Location:index.php?action=authorDash');
-                }
+
+    public function loginUser($email, $password)
+    {
+        $query = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $query->bindParam(':email', $email);
+        $query->execute();
+        $row = $query->fetch();
+        if (password_verify($password, $row['password'])) {
+            if ($row['role'] == 'admin') {
+                $_SESSION['admin'] = $row['idUser'];
+                header('Location:index.php?action=adminDashboard');
+            } else {
+                $_SESSION['author'] = $row['idUser'];
+                header('Location:index.php?action=authorDash');
             }
         }
+    }
+
+    public function getNumUsers()
+    {
+        $query = "SELECT count(*) as total from users";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result['total'];
+    }
 }
 ?>

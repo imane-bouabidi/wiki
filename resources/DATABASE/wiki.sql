@@ -1,8 +1,8 @@
 -- Création de la base de données
-CREATE DATABASE IF NOT EXISTS wiki;
+CREATE DATABASE IF NOT EXISTS wikiv2;
 
 -- Utilisation de la base de données
-USE wiki;
+USE wikiv2;
 
 -- Table des utilisateurs
 CREATE TABLE Users (
@@ -24,13 +24,13 @@ CREATE TABLE Categorie (
 CREATE TABLE Wiki (
     idWiki INT AUTO_INCREMENT PRIMARY KEY,
     titre VARCHAR(50) NOT NULL,
-    contenu VARCHAR(50) NOT NULL,
+    contenu LONGTEXT NOT NULL,
     idCat INT NOT NULL,
     date_creation DATE NOT NULL,
-    image VARCHAR(50),
+    image VARCHAR(50) NOT NULL,
     isActive BOOLEAN DEFAULT 0,
-    idUser INT,
-    CONSTRAINT fk_user_id FOREIGN KEY (idUser) REFERENCES Users(idUser),
+    idUser INT NOT NULL,
+    CONSTRAINT fk_user_id FOREIGN KEY (idUser) REFERENCES Users(idUser) on delete cascade,
     CONSTRAINT fk_idCat FOREIGN KEY (idCat) REFERENCES Categorie(idCat)
 );
 

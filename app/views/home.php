@@ -38,28 +38,14 @@ ob_start();
         <div id="wrapper">
             <div class="content-container sh-page-layout-default">
                 <div class="container entry-content">
-                    <!-- <div
-                        class="sh-filter-blog sh-filter-container sh-portfolio-filter-style3 sh-portfolio-filter-style4">
-                        <div class="sh-filter">
-                            <span class="sh-filter-item active">
-                                <a href="https://jevelin.shufflehound.com/blog1/" class="sh-filter-item-content">
-                                    All </a>
-                            </span>
-                            <span class="sh-filter-item">
-                                <a href="https://jevelin.shufflehound.com/blog1/?category=commercial"
-                                    class="sh-filter-item-content">
-                                    Commercial </a>
-                            </span>
-                        </div>
-                    </div> -->
                     <div id="content" class="content-with-sidebar-right blog-page-list">
-                        <div class="sh-group blog-list blog-style-masonry masonry2"
+                        <div class=" sh-group blog-list blog-style-masonry masonry2" 
                             style="position: relative; height: 4238.86px; opacity: 1;">
                             <?php foreach ($wikisDATA as $wiki) {
                                 if ($wiki->getIsActive() == 0) {
                                     ?>
-                                    <article id="post-93"
-                                        class="post-item post-93 post type-post status-publish format-standard has-post-thumbnail hentry category-people category-travel tag-girl tag-lifestyle"
+                                    <article id="<?=$wiki->getIdWiki()?>"
+                                        class="wikis post-item post-93 post type-post status-publish format-standard has-post-thumbnail hentry category-people category-travel tag-girl tag-lifestyle"
                                         itemscope="itemscope" itemtype="http://schema.org/Article"
                                         style="position: absolute; left: 0px; top: 0px;">
                                         <div class="post-container">
@@ -84,7 +70,7 @@ ob_start();
                                                 <div class="post-meta post-meta-one">
                                                     <span class="post-meta-author">
                                                         by <a class="bypostauthor" itemprop="url" rel="author">
-                                                            <?= $user->getUserById($wiki->getIdUser())->getUserName() ?>
+                                                            <?= $users->getUserById($wiki->getIdUser())->getUserName() ?>
                                                         </a>
                                                     </span>
                                                     <time class="updated semantic" itemprop="dateModified"
@@ -100,7 +86,7 @@ ob_start();
                                                     </h2>
                                                 </a>
                                                 <div class="post-content" itemprop="text">
-                                                    <?= $wiki->getContenu() ?>
+                                                    <?= substr($wiki->getContenu(),0,80) . '...' ?>
                                                 </div>
                                                 <div class="post-meta post-meta-two">
                                                     <div class="sh-columns post-meta-comments">
@@ -197,7 +183,7 @@ ob_start();
                             <form method="get" class="search-form" action="https://jevelin.shufflehound.com/blog1/">
                                 <div>
                                     <label>
-                                        <input type="search" class="sh-sidebar-search search-field"
+                                        <input type="search" id="search" class="sh-sidebar-search search-field"
                                             placeholder="Search here..." value="" name="s" title="Search text"
                                             required="">
                                     </label>
