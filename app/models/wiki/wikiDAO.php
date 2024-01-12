@@ -34,7 +34,7 @@ class WikiDAO
             $query->execute();
 
         }
-        header('Location:index.php?action=home');
+        header('Location:index.php?action=authorDash');
 
     }
     public function UpdateWiki($wiki)
@@ -75,6 +75,20 @@ class WikiDAO
     {
         $query = "SELECT * FROM wiki";
         $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $wikis = array();
+        foreach ($result as $row) {
+            $wikis[] = new Wiki($row['idWiki'], $row['titre'], $row['contenu'],0, $row['idCat'], $row['date_creation'], $row['image'], $row['isActive'], $row['idUser']);
+        }
+        return $wikis;
+    }
+    public function getAuthWikis()
+    {
+        $query = "SELECT * FROM wiki where idUser = :idUser";
+        $stmt = $this->pdo->prepare($query);
+        $idUser = $_SESSION['author'];
+        $stmt->bindParam(':idUser', $idUser);
         $stmt->execute();
         $result = $stmt->fetchAll();
         $wikis = array();

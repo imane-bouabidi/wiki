@@ -6,12 +6,9 @@
                     <div class="sh-table">
                         <div class="sh-table-cell sh-group">
                             <div class="header-logo sh-group-equal">
-                                <a href="index.php?action=home" class="header-logo-container sh-table-small"
-                                    rel="home">
+                                <a href="index.php?action=home" class="header-logo-container sh-table-small" rel="home">
                                     <div class="sh-table-cell">
-                                        <img class=" w-4"
-                                            src="asstes\img\wiki-logo.png"
-                                            alt="wiki logo">
+                                        <img class=" w-4" src="asstes\img\wiki-logo.png" alt="wiki logo">
                                     </div>
                                 </a>
                             </div>
@@ -86,8 +83,7 @@
                     <div class="sh-table">
                         <div class="sh-table-cell sh-group">
                             <div class="header-logo sh-group-equal">
-                                <a href="index.php?action=home" class="header-logo-container sh-table-small"
-                                    rel="home">
+                                <a href="index.php?action=home" class="header-logo-container sh-table-small" rel="home">
                                     <div class="sh-table-cell">
                                         <!-- <div style="display: flex; flex-direction : column;">
                                             <img style="width: 60px;" src="asstes\img\wiki-logo.png" alt="wiki logo">
@@ -105,29 +101,33 @@
                                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-7">
                                             <a href="index.php?action=home">Home</a>
                                         </li>
-                                        <?php if(empty($_SESSION['admin'])&& empty($_SESSION['author'])){?>
-                                        <li id="menu-item-112"
-                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-112">
-                                            <a href="index.php?action=signUp">Sign Up</a>
-                                        </li>
+                                        <?php if (empty($_SESSION['admin']) && empty($_SESSION['author'])) { ?>
+                                            <li id="menu-item-112"
+                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-112">
+                                                <a href="index.php?action=signUp">Sign Up</a>
+                                            </li>
+                                            <li id="menu-item-111"
+                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111">
+                                                <a href="index.php?action=logIn">Log In</a>
+                                            </li>
+                                        <?php } ?>
                                         <li id="menu-item-111"
                                             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111">
-                                            <a href="index.php?action=logIn">Log In</a>
+                                            <?php if (!empty($_SESSION['admin'])) { ?>
+                                            <a href="index.php?action=adminDash">Dashboard</a>
+                                            <?php }else if(!empty($_SESSION['author'])){?>
+                                                <a href="index.php?action=authorDash">Dashboard</a>
+                                            <?php }?>
                                         </li>
-                                        <?php }?>
-                                        <li id="menu-item-111"
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111">
-                                        <a href="index.php?action=addwiki">Add wiki</a>
-                                    </li>
-                                    <?php if(!empty($_SESSION['admin'])|| !empty($_SESSION['author'])){?>
-                                    <li id="menu-item-112"
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-112">
-                                        <a href="index.php?action=logOut">Log Out</a>
-                                    </li>
-                                    <?php }?>
-                                    <li class="menu-item sh-nav-search sh-nav-special">
-                                        <a href="#"><i class="icon icon-magnifier"></i></a>
-                                    </li>
+                                        <?php if (!empty($_SESSION['admin']) || !empty($_SESSION['author'])) { ?>
+                                            <li id="menu-item-112"
+                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-112">
+                                                <a href="index.php?action=logOut">Log Out</a>
+                                            </li>
+                                        <?php } ?>
+                                        <li class="menu-item sh-nav-search sh-nav-special">
+                                            <a href="#"><i class="icon icon-magnifier"></i></a>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>

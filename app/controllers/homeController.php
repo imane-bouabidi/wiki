@@ -23,7 +23,7 @@ class HomeController {
     }
     public function ShowAuthorDash() {
         $wikis = new WikiDAO();
-        $wikisDATA = $wikis->getAllWikis();
+        $wikisDATA = $wikis->getAuthWikis();
         $cats = new CategoryDAO();
         $catsDATA = $cats->getAllCategories();
         include 'views\authorDashboard.php';

@@ -49,7 +49,7 @@ if (isset($_GET['action'])) {
         case 'logInSubmit':
             $user->logInSubmit();
             break;
-        case 'addwiki':
+        case 'Showaddwiki':
             $home->Showaddwiki();
             break;
         case 'detailsPoste':
@@ -81,6 +81,9 @@ if (isset($_GET['action'])) {
             break;
         case 'wikiManagement':
             $admin->showWikis();
+            break;
+        case 'statistics':
+            $admin->statistics();
             break;
         case 'hideWiki':
             $wiki->hideWiki();

@@ -1,3 +1,6 @@
+
+<?php if(!empty($_SESSION['author'])){ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -173,3 +176,5 @@
 </body>
 
 </html>
+
+<?php }else  header('Location:index.php?action=home')?>

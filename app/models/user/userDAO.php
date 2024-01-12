@@ -48,21 +48,21 @@ class UserDAO
     }
     
 
-    public function loginUser($email, $password)
-    {
-        $query = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $query->bindParam(':email', $email);
-        $query->execute();
-        $row = $query->fetch();
-        if ($password==$row['password']) {
-            if($row['role']=='admin'){
-                $_SESSION['admin'] = $row['idUser'];
-                header('Location:index.php?action=adminDashboard');
-            }else{
-                $_SESSION['author'] = $row['idUser'];
-                header('Location:index.php?action=authorDash');
+        public function loginUser($email, $password)
+        {
+            $query = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
+            $query->bindParam(':email', $email);
+            $query->execute();
+            $row = $query->fetch();
+            if (password_verify($password, $row['password'])) {
+                if($row['role']=='admin'){
+                    $_SESSION['admin'] = $row['idUser'];
+                    header('Location:index.php?action=adminDashboard');
+                }else{
+                    $_SESSION['author'] = $row['idUser'];
+                    header('Location:index.php?action=authorDash');
+                }
             }
         }
-    }
 }
 ?>

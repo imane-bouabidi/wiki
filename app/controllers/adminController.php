@@ -19,5 +19,12 @@ class AdminController {
         $catsDATA = $cats->getAllCategories();
         include_once 'views\manageWikis.php';
     }
+    public function statistics() {
+        // $wikis = new WikiDAO();
+        // $wikisDATA = $wikis->getAllWikis();
+        // $cats = new CategoryDAO();
+        // $catsDATA = $cats->getAllCategories();
+        include_once 'views\statistics.php';
+    }
 
 }
